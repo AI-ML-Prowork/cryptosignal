@@ -138,7 +138,10 @@ nav {
   margin-top: 100px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   background-color: rgba(0, 0, 0, 1);
+  border: 10px solid #ddd;                                                  /* manual if not loaded need to remove  this*/
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);                          /* manual if not loaded need to remove  this*/
   color: white; /* Set text color for the entire table */
+  
 }
 
 .crypto-table th, .crypto-table td {
