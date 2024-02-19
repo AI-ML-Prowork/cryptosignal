@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}   
+ <title> Market Data</title>
+{% block content %}
+<body>
+    <div id="left-nav">
+        <div class="nav-button" onclick="toggleCrypto('bitcoin')">Bitcoin</div>
+        <div class="nav-button" onclick="toggleCrypto('ethereum')">Ethereum</div>
+        <div class="nav-button" onclick="toggleCrypto('cardano')">ADA</div>
+        <div class="nav-button" onclick="toggleCrypto('decentraland')">Mana</div>
+        <div class="nav-button" onclick="toggleCrypto('gala')">Gala</div>
+    </div>
+
+    <div id="crypto-content">
+        {% for crypto, data in market_data.items %}
+            <table class="crypto-table" id="{{ crypto }}-table" {% if not forloop.first %}style="display: none;"{% endif %}>
+                <thead>
+                    <tr>
+                        <th>Exchange</th>
+                        <th>Market Pair</th>
+                        <th>Category</th>
+                        <th>Price (USD)</th>
+                        <th>Diff. Amount</th>
+                        <th>Diff Percentage (%)</th>
+                        <th>Txn Fees</th>
+                        <th>Slippage (%)</th>
+                        <th>Network Fees</th>
+                        <th>Risk Percentage (%)</th>
+                        <th>Profit / Loss</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in data %}
+                        <tr>
+                            <td>{{ entry.exchange }}</td>
+                            <td>{{ entry.market_pair }}</td>
+                            <td>{{ entry.category }}</td>
+                            <td>{{ entry.price }}</td>
+                            <td>{{ entry.diff_amount|default:"0" }}</td>
+                            <td>{{ entry.diff_percentage|default:"0" }}</td>
+                            <td>{{ entry.txn_fees|default:"0" }}</td>
+                            <td>{{ entry.slippage|default:"0" }}</td>
+                            <td>{{ entry.network_fees|default:"0" }}</td>
+                            <td>{{ entry.risk_percentage|default:"0" }}</td>
+                            <td>{{ entry.profit_loss|default:"0" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+
+    <script>
+        function toggleCrypto(crypto) {
+            var tables = document.getElementsByClassName('crypto-table');
+            for (var i = 0; i < tables.length; i++) {
+                tables[i].style.display = 'none';
+            }
+            document.getElementById(crypto + '-table').style.display = 'table';
+        }
+    </script>
+</body>
+{% endblock %}

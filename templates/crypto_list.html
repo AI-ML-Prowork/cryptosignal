@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <title>Cryptocurrency List</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function updateCryptoData() {
+            $.ajax({
+                url: '/crypto-list-data',  // Add a new URL for fetching data
+                method: 'GET',
+                success: function(data) {
+                    // Loop through the updated data and manually update the price values
+                    $.each(data.cryptocurrencies, function(index, crypto) {
+                        var row = $('#crypto-table tbody tr').eq(index);
+                        row.find('td:eq(2)').text('$' + crypto.quote.USD.price);
+                        row.find('td:eq(3)').text(crypto.quote.USD.percent_change_1h + '%');
+                        row.find('td:eq(4)').text(crypto.quote.USD.percent_change_24h + '%');
+                        row.find('td:eq(5)').text(crypto.quote.USD.percent_change_7d + '%');
+                        row.find('td:eq(6)').text('$' + crypto.quote.USD.market_cap);
+                        row.find('td:eq(7)').text('$' + crypto.quote.USD.volume_24h);
+                        row.find('td:eq(8)').text(crypto.circulating_supply);
+                    });
+                },
+                error: function(error) {
+                    console.error('Error fetching crypto data:', error);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            // Fetch and update data every 1 seconds (adjust as needed)
+            setInterval(updateCryptoData, 10000);
+        });
+    </script>
+</head>
+
+
+
+<body>
+    <h1>Cryptocurrency List</h1>
+    <table id="crypto-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Price (USD)</th>
+                <th>1h %</th>
+                <th>24h %</th>
+                <th>7d %</th>
+                <th>Market Cap (USD)</th>
+                <th>Volume (24h)</th>
+                <th>Circulating Supply</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for crypto in cryptocurrencies %}
+                <tr>
+                    <td>{{ crypto.name }}</td>
+                    <td>{{ crypto.symbol }}</td>
+                    <td>${{ crypto.quote.USD.price }}</td>
+                    <td>{{ crypto.quote.USD.percent_change_1h }}%</td>
+                    <td>{{ crypto.quote.USD.percent_change_24h }}%</td>
+                    <td>{{ crypto.quote.USD.percent_change_7d }}%</td>
+                    <td>${{ crypto.quote.USD.market_cap }}</td>
+                    <td>${{ crypto.quote.USD.volume_24h }}</td>
+                    <td>{{ crypto.circulating_supply }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+{% endblock %} 

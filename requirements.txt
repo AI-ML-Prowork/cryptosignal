@@ -1,0 +1,10 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+django-filter
+requests
+python-dotenv
+python-decouple
+dj-database-url
+psycopg2-binary
+beautifulsoup4
