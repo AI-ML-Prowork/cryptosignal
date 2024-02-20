@@ -8,26 +8,24 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/home.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    
-<!-- #javascript for the crypto-table and live-table -->
-<script>
-</script>
 
+    <!-- #javascript for the crypto-table and live-table -->
+    <script>
+        // Your scripts go here
+    </script>
 </head>
-
-<body>
-    <body style="margin: 0;
+<body style="margin: 0;
      font-family: Arial, sans-serif; 
      background-image: url('{% static 'assets/imgs/background.jpg' %}'); 
      background-size: cover; 
      background-position: center; 
      margin-bottom: 200px;">
-    
+
     <nav>
         <div class="logo">
             <img src="{% static 'assets/imgs/logo.png' %}" alt="CryptoSignaL Logo" width="40">
         </div>
-        <a href="{% url 'home' %}" class="navbar-brand">CryptoSignaL</a>
+        <a href='{% url "home" %}' class="navbar-brand">CryptoSignaL</a>
 
         <ul class="navbar-options">
             <li><a href="{% url 'market' %}">Market</a></li>
@@ -45,44 +43,16 @@
         </div>
     </nav>
 
-
-    <div id="common-content">
-        {% block common_content %}{% endblock %}
+    <!-- Content block to be extended by specific pages -->
+    <div id="content">
+        {% block content %}{% endblock %}
     </div>
 
-
-
-    <!-- Your webpage content goes here -->
-    <h1>Trade Your Crypto</h1>
-    <h1>on <span style="color: yellow;">CryptoSignaL</span></h1>
-    <h1>without worries</h1>
-    <p>Signup & explore your trading partner</p>
-    <p><a href="#" class="signup-button">Signup</a></p>
-
-
-
-
-    <!-- Live text and animated GIF container -->
-    <div class="live-text-container">
-        <div class="live-text"><h3>Power Of Crypto</h3></div>
-        <!-- Replace the placeholder with your actual animated GIF -->
-        <img src="{% static 'assets/imgs/bitcoin1.gif' %}" alt="Live Animation" class="live-gif">
-    </div>
-
-    <div id="crypto-table">
-        <!-- Table will be added here -->
-      </div>
-
-      <script src="{% static 'assets/js/home.js' %}"></script>
-
-
-      <!-- Add this at the end of your HTML file -->
-      <footer>
+    <!-- Footer block -->
+    <footer>
         <div class="footer-text">
             <p>&copy; 2024 CryptoSignaL. All Rights Reserved.</p>
         </div>
     </footer>
-
 </body>
-
 </html>

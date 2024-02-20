@@ -10,13 +10,38 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 import os
 
-def index(request):
-
-    return render(request, 'index.html')
 
 def home(request):
 
     return render(request, 'home.html')
+
+def cryptocurrencies(request):
+
+    return render(request, 'cryptocurrencies.html')
+
+def market(request):
+
+    return render(request, 'market.html')
+
+def trade(request):
+
+    return render(request, 'trade.html')
+
+def about(request):
+
+    return render(request, 'about.html')
+
+def contact(request):
+
+    return render(request, 'contact.html')
+
+def user_signin(request):
+
+    return render(request, 'user_signin.html')
+
+def user_signup(request):
+
+    return render(request, 'user_signup.html')
 
 
 @login_required(login_url='signin/')
