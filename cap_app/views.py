@@ -12,105 +12,97 @@ import os
 
 
 def home(request):
-
     return render(request, 'home.html')
 
-def cryptocurrencies(request):
 
-    return render(request, 'cryptocurrencies.html')
-
-def market(request):
-
-    return render(request, 'market.html')
-
+@login_required(login_url='user_login')
 def trade(request):
-
     return render(request, 'trade.html')
 
-def about(request):
 
+@login_required(login_url='user_login')
+def about(request):
     return render(request, 'about.html')
 
-def contact(request):
 
+@login_required(login_url='user_login')
+def contact(request):
     return render(request, 'contact.html')
 
 
 
 
-@login_required(login_url='signin/')
-def base(request):
-    return render(request, 'base.html')
+
 
 
 
 #______________________________________#
 
 
-def signup(request):
+# def signup(request):
     
-    if request.user.is_authenticated:
-        return redirect('/')    
-    if request.method == 'POST':
+#     if request.user.is_authenticated:
+#         return redirect('/')    
+#     if request.method == 'POST':
 
-        first_name = request.POST.get('First_Name')
-        last_name = request.POST.get('Last_Name')
-        email = request.POST.get('Email')
-        password = request.POST.get('Password')
-        confirm_password = request.POST.get('Confirm_Password')
+#         first_name = request.POST.get('First_Name')
+#         last_name = request.POST.get('Last_Name')
+#         email = request.POST.get('Email')
+#         password = request.POST.get('Password')
+#         confirm_password = request.POST.get('Confirm_Password')
 
-        if password != confirm_password:
-            messages.error(request, 'Passwords do not match')
-            return redirect('/signup/')
+#         if password != confirm_password:
+#             messages.error(request, 'Passwords do not match')
+#             return redirect('/signup/')
         
-        # Create a new user
-        user = User.objects.create_user(
-            username=email,
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            password=password,
-        )
+#         # Create a new user
+#         user = User.objects.create_user(
+#             username=email,
+#             first_name=first_name,
+#             last_name=last_name,
+#             email=email,
+#             password=password,
+#         )
 
-        login(request, user)
-        messages.success(request, 'Account created successfully')
-        return redirect('/signin/') 
+#         login(request, user)
+#         messages.success(request, 'Account created successfully')
+#         return redirect('/signin/') 
     
-    return render(request, 'authentication/signup.html')
+#     return render(request, 'authentication/signup.html')
 
 
 
-def signin(request):
+# def signin(request):
 
-    if request.user.is_authenticated:
-        return redirect('/')
-    if request.method == 'POST':
-        email = request.POST.get('Email')
-        password = request.POST.get('Password')
-        user = authenticate(request, username=email, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'Logged in successfully')
-            return redirect('/') 
-        else:
-            messages.error(request, 'Invalid email or password')
+#     if request.user.is_authenticated:
+#         return redirect('/')
+#     if request.method == 'POST':
+#         email = request.POST.get('Email')
+#         password = request.POST.get('Password')
+#         user = authenticate(request, username=email, password=password)
+#         if user is not None:
+#             login(request, user)
+#             messages.success(request, 'Logged in successfully')
+#             return redirect('/') 
+#         else:
+#             messages.error(request, 'Invalid email or password')
 
-    return render(request, 'authentication/signin.html')
+#     return render(request, 'authentication/signin.html')
 
 
-@login_required(login_url='signin/')
-def logout(request):
-    auth_logout(request)
-    messages.success(request, 'Logged out successfully')
-    return redirect('/signin/')
+# @login_required(login_url='signin/')
+# def logout(request):
+#     auth_logout(request)
+#     messages.success(request, 'Logged out successfully')
+#     return redirect('/signin/')
 
-@login_required(login_url='signin/')
+@login_required(login_url='user_login')
 def crypto_list(request):
     return render(request, 'crypto_list.html', {'cryptocurrencies': get_cryptocurrency_data()})
 
 
 
-@login_required(login_url='signin/')
+@login_required(login_url='user_login')
 def crypto_list_data(request):
     return JsonResponse({'cryptocurrencies': get_cryptocurrency_data()})
 
@@ -138,7 +130,7 @@ def get_cryptocurrency_data():
     
 
 
-@login_required(login_url='signin/')
+@login_required(login_url='user_login')
 def market_data(request):
 
     dummy_data = {
@@ -189,14 +181,11 @@ def market_data(request):
 
 
 
-
-
 from django.shortcuts import render, redirect
 from cap_app.models import CustomUser
 
 def user_signup(request):
     if request.method == 'POST':
-        # Get data from the POST request
         first_name = request.POST.get('firstname')
         last_name = request.POST.get('lastname')
         username = request.POST.get('username')
@@ -204,14 +193,9 @@ def user_signup(request):
         mobile = request.POST.get('mobile')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
-
-        # Check if passwords match
+   
         if password != confirm_password:
-            return render(request, 'authentication/user_signup.html', {'error_message': 'Passwords do not match'})
-
-
-
-        # Create a new CustomUser object
+            return render(request, 'authentication/user_signup.html', {'error_message': 'Passwords do not match'})     
         new_user = CustomUser(
             first_name=first_name,
             last_name=last_name,
@@ -219,47 +203,32 @@ def user_signup(request):
             email=email,
             mobile=mobile
         )
-        new_user.set_password(password)  # Set the password securely
-
-        # Save the new user to the database
-        new_user.save()
-
-        # You may want to log in the user automatically after registration
+        new_user.set_password(password)         
+        new_user.save()        
         #login(request, new_user)
 
-        return redirect('home')  # Redirect to your home page or another success page
+        return redirect('user_login')  
     else:
         return render(request, 'authentication/user_signup.html')
 
 
 from django.contrib.auth import authenticate, login, logout
 
-
 def user_login(request):
-    if request.method == 'POST':
-        # Get data from the POST request
+    if request.method == 'POST':        
         username_or_email = request.POST.get('username_or_email')
-        password = request.POST.get('signin_password')
-
-        # Authenticate the user
-        user = authenticate(request, username=username_or_email, password=password)
-
-        # Check if authentication was successful
-        if user is not None:
-            # Log in the user
+        password = request.POST.get('signin_password')        
+        user = authenticate(request, username=username_or_email, password=password)        
+        if user is not None:            
             login(request, user)
-            
-            # Redirect to the home page or another success page
-            return redirect('home')
+            return redirect('/')
         else:
-            # Authentication failed
             return render(request, 'authentication/user_login.html', {'error_message': 'Invalid username or password'})
-
     else:
         return render(request, 'authentication/user_login.html')
     
 
-
+@login_required(login_url='user_login')
 def user_logout(request):
     logout(request)
     return redirect('home')

@@ -9,10 +9,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/home.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     
+    
 <!-- #javascript for the crypto-table and live-table -->
 
 </head>
-
 <body>
     <body style="margin: 0;
      font-family: Arial, sans-serif; 
@@ -28,9 +28,9 @@
         <a href="{% url 'home' %}" class="navbar-brand">CryptoSignaL</a>
 
         <ul class="navbar-options">
-            <li><a href="{% url 'market' %}">Market</a></li>
+            <li><a href="{% url 'market_data' %}">Market</a></li>
             <li><a href="{% url 'trade' %}">Trade</a></li>
-            <li><a href="{% url 'cryptocurrencies' %}">Cryptocurrency</a></li>
+            <li><a href="{% url 'crypto_list' %}">Cryptocurrency</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
@@ -44,9 +44,7 @@
     </nav>
 
 
-    <div id="common-content">
-        {% block common_content %}{% endblock %}
-    </div>
+
 
 
 

@@ -16,16 +16,9 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/about.css' %}">
 
-    <!-- #javascript for the crypto-table and live-table -->
-    <script>
-        // Your scripts go here
-    </script>
+   
+   
 
-    <script src="{% static 'assets/js/about.js' %}"></script>
-    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>
-    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
-    <script src='https://unpkg.com/feather-icons'></script><script  src="{% static 'assets/js/contact.js' %}"></script>
 
 </head>
 <body style="margin: 0;
@@ -39,12 +32,12 @@
         <div class="logo">
             <img src="{% static 'assets/imgs/logo.png' %}" alt="CryptoSignaL Logo" width="40">
         </div>
-        <a href='{% url "home" %}' class="navbar-brand">CryptoSignaL</a>
+        <a href="{% url 'home' %}" class="navbar-brand">CryptoSignaL</a>
 
         <ul class="navbar-options">
-            <li><a href="{% url 'market' %}">Market</a></li>
+            <li><a href="{% url 'market_data' %}">Market</a></li>
             <li><a href="{% url 'trade' %}">Trade</a></li>
-            <li><a href="{% url 'cryptocurrencies' %}">Cryptocurrency</a></li>
+            <li><a href="{% url 'crypto_list' %}">Cryptocurrency</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
@@ -57,12 +50,19 @@
         </div>
     </nav>
 
-    <!-- Content block to be extended by specific pages -->
+
     <div id="content">
-        {% block content %}{% endblock %}
+        {% block content %}
+        
+        
+        {% endblock %}
     </div>
 
-    <!-- Footer block -->
+
+
+
+
+
     <footer>
         <div class="footer-text">
             <p>&copy; 2024 CryptoSignaL. All Rights Reserved.</p>
@@ -81,5 +81,21 @@
             </div> 
         </div>
     </footer>
+
+
+ <!-- #javascript for the crypto-table and live-table -->
+    <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+  nomodule
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+></script>
+  <script src="{% static 'assets/js/about.js' %}"></script>
+  <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+  <script src='https://unpkg.com/feather-icons'></script><script  src="{% static 'assets/js/contact.js' %}"></script>
 </body>
 </html>
