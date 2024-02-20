@@ -183,4 +183,22 @@ nav {
 
 /* Add this to your home.css file */
 
-/* Footer styles */ .footer { background-color: #333; /* Dark background color for the footer */ padding: 20px; display: flex; justify-content: space-between; /* Spread items horizontally */ align-items: center; } .footer a { color: white; text-decoration: none; margin-right: 10px; } .footer a:hover { text-decoration: underline; } .footer .copyright { order: 1; flex-grow: 1; } .footer .quick-links { order: 2; flex-grow: 2; display: flex; flex-wrap: wrap; justify-content: flex-end; } .footer .quick-links a { margin-bottom: 10px; } /* Media queries for responsive design */ @media (max-width: 768px) { .footer { flex-direction: column; } .footer .quick-links { order: 1; align-self: flex-start; margin-top: 10px; } .footer .copyright { order: 2; align-self: center; } } 
+footer {
+  background-color: rgb(197, 197, 54);
+  font-family: 'Inter', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.5);
+  
+}
+
+.footer-text p {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 0;
+}

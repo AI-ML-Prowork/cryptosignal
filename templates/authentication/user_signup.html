@@ -10,11 +10,14 @@
 </head>
   <body>
     <!-- Navbar -->
+    
     <div class="navbar">
       <div>
         <img src="/static/assets/imgs/logo.png" alt="Company Logo" />
 
-        <h1>CryptoSignal</h1>
+        <a href="{% url 'home' %}">
+          <h1>CryptoSignal</h1>
+      </a>
       </div>
       <h4>Already have an account?</h4>
       <a href="{% url 'user_login' %}" class="signin-link"> Sign In</a>
