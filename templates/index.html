@@ -6,13 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoSignaL</title>
 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Quicksand&amp;display=swap'><link rel="stylesheet" href="{% static 'assets/css/contact.css' %}">
+
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/home.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/about.css' %}">
 
     <!-- #javascript for the crypto-table and live-table -->
     <script>
         // Your scripts go here
     </script>
+
+    <script src="{% static 'assets/js/about.js' %}"></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+    <script src='https://unpkg.com/feather-icons'></script><script  src="{% static 'assets/js/contact.js' %}"></script>
+
 </head>
 <body style="margin: 0;
      font-family: Arial, sans-serif; 
@@ -37,7 +51,7 @@
 
         <div class="login-signup">
             <div class="login">
-                <a href="#">Login</a>
+                <a href="{% url 'user_login' %}">Login</a>
             </div>
             <a href="{% url 'user_signup' %}" class="signup-button">Signup</a>
         </div>
@@ -52,6 +66,19 @@
     <footer>
         <div class="footer-text">
             <p>&copy; 2024 CryptoSignaL. All Rights Reserved.</p>
+            <div class="quick-links"> 
+                <a href="#">Trade</a> 
+                <a href="#">Market</a> 
+                <a href="#">Cryptocurrency</a> 
+                <a href="#">Company</a> 
+                <a href="#">Home</a> 
+                <a href="#">About</a> 
+                <a href="#">Contact</a> 
+                <a href="#">Legal</a> 
+                <a href="#">Trade Policy</a> 
+                <a href="#">Terms of Service</a> 
+                <a href="#">Privacy Policy</a> 
+            </div> 
         </div>
     </footer>
 </body>

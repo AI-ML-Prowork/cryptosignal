@@ -1,9 +1,10 @@
+
 /* user_signup.css */
 
 body {
   background-color: black;
   color: white;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -12,18 +13,18 @@ body {
   max-width: 400px;
   margin: 40px;
   padding: 20px;
-  background-color: rgba(116, 102, 102, 0.1); /* Semi-transparent white background */
+  background-color: rgba(
+    116,
+    102,
+    102,
+    0.1
+  ); /* Semi-transparent white background */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
 }
 
-h2 {
-  color: white;
-  text-align: left;
-}
-
+h2,
 p {
-  color: white;
   text-align: left;
 }
 
@@ -42,7 +43,12 @@ input {
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Semi-transparent white background */
   color: black;
 }
 
@@ -57,7 +63,7 @@ button {
 }
 
 button:hover {
-  background-color: #c7cf31;
+  background-color: #aabb22; /* Adjusted color on hover */
 }
 
 .terms-checkbox {
@@ -66,3 +72,46 @@ button:hover {
 }
 
 /* Add any additional styling as needed */
+
+/* Navbar styles */
+.navbar {
+  background-color: #333; /* Dark background color for the navbar */
+  padding: 10px;
+  display: flex;
+  justify-content: space-between; /* Spread items horizontally */
+  align-items: center; /* Vertically center items */
+  margin: 0; /* Center the navbar horizontally */
+  height: 30px; /* Adjust the height of the navbar as needed */
+}
+
+.navbar img {
+  max-height: 10px; /* Adjust the maximum height of the logo */
+  margin-right: 10px; /* Add some margin to the right of the logo */
+}
+
+.navbar h1 {
+  margin: 0;
+  padding: 0;
+  color: #c7cf31;
+  font-size: large; /* Text color for the company name */
+}
+
+.navbar .signin-link {
+  color: yellow;
+  text-decoration: yellow;
+}
+.navbar h4 {
+  margin-right: -72%; /* Adjust the margin-right for the h4 tag */
+  font-size: small;
+  font-family: Arial, Helvetica, sans-serif;
+}
+  /* Footer styles */
+  .footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+  }
