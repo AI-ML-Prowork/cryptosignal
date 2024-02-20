@@ -35,13 +35,7 @@ def contact(request):
 
     return render(request, 'contact.html')
 
-def user_signin(request):
 
-    return render(request, 'user_signin.html')
-
-def user_signup(request):
-
-    return render(request, 'user_signup.html')
 
 
 @login_required(login_url='signin/')
@@ -194,6 +188,81 @@ def market_data(request):
     return render(request, 'market_data.html', {'market_data': dummy_data})
 
 
+
+
+
+from django.shortcuts import render, redirect
+from cap_app.models import CustomUser
+
+def user_signup(request):
+    if request.method == 'POST':
+        # Get data from the POST request
+        first_name = request.POST.get('firstname')
+        last_name = request.POST.get('lastname')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
+        # Check if passwords match
+        if password != confirm_password:
+            return render(request, 'authentication/user_signup.html', {'error_message': 'Passwords do not match'})
+
+
+
+        # Create a new CustomUser object
+        new_user = CustomUser(
+            first_name=first_name,
+            last_name=last_name,
+            username=username,
+            email=email,
+            mobile=mobile
+        )
+        new_user.set_password(password)  # Set the password securely
+
+        # Save the new user to the database
+        new_user.save()
+
+        # You may want to log in the user automatically after registration
+        #login(request, new_user)
+
+        return redirect('home')  # Redirect to your home page or another success page
+    else:
+        return render(request, 'authentication/user_signup.html')
+
+
+from django.contrib.auth import authenticate, login, logout
+
+
+def user_login(request):
+    if request.method == 'POST':
+        # Get data from the POST request
+        username_or_email = request.POST.get('username_or_email')
+        password = request.POST.get('signin_password')
+
+        # Authenticate the user
+        user = authenticate(request, username=username_or_email, password=password)
+
+        # Check if authentication was successful
+        if user is not None:
+            # Log in the user
+            login(request, user)
+            
+            # Redirect to the home page or another success page
+            return redirect('home')
+        else:
+            # Authentication failed
+            return render(request, 'authentication/user_login.html', {'error_message': 'Invalid username or password'})
+
+    else:
+        return render(request, 'authentication/user_login.html')
+    
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('home')
 
 
 

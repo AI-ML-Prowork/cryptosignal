@@ -11,9 +11,9 @@ urlpatterns = [
     path('trade', trade, name='trade'),
     path('about', about, name='about'),
     path('contact', contact, name='contact'),
-    path('user_signin', user_signin, name='user_signin'),
+    path('user_login', user_login, name='user_login'),
     path('user_signup', user_signup, name='user_signup'),
-    #path('logout', logoutRequest, name="logout"),
+    path('user_logout', user_logout, name="user_logout"),
 
 
 
