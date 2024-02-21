@@ -4,6 +4,7 @@
 
 {% block content %}
 <body>
+    
     <div id="left-nav">
         <div class="nav-button" onclick="toggleCrypto('bitcoin')">Bitcoin</div>
         <div class="nav-button" onclick="toggleCrypto('ethereum')">Ethereum</div>
@@ -11,6 +12,7 @@
         <div class="nav-button" onclick="toggleCrypto('decentraland')">Mana</div>
         <div class="nav-button" onclick="toggleCrypto('gala')">Gala</div>
     </div>
+
 
     <div id="crypto-content">
         {% for crypto, data in market_data.items %}

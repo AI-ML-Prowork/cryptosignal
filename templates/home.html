@@ -35,12 +35,22 @@
             <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
 
+        {% if user.is_authenticated %}
+        <!-- If the user is authenticated, show the logout button -->
+        <div class="login-signup">
+            <div class="login">
+                <a href="{% url 'user_logout' %}">Logout</a>
+            </div>
+        </div>
+    {% else %}
+        <!-- If the user is not authenticated, show the login and signup buttons -->
         <div class="login-signup">
             <div class="login">
                 <a href="{% url 'user_login' %}">Login</a>
             </div>
             <a href="{% url 'user_signup' %}" class="signup-button">Signup</a>
         </div>
+    {% endif %}
     </nav>
 
 
