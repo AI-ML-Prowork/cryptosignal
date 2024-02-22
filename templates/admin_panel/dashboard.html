@@ -1,0 +1,87 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+
+        <div class="cardBox">
+            <div class="card bg-primary text-white">
+                <div>
+                    <div class="numbers">{{ total_users }}</div>
+                    <div class="cardName">Total Users</div>
+                </div>
+            </div>
+
+            <div class="card bg-success text-white">
+                <div>
+                    <div class="numbers">{{ total_rewards }}</div>
+                    <div class="cardName">Total Rewards</div>
+                </div>
+            </div>
+
+            <div class="card bg-info text-white">
+                <div>
+                    <div class="numbers">{{ total_products }}</div>
+                    <div class="cardName">Total Products</div>
+                </div>
+            </div>
+
+            <div class="card bg-warning text-dark">
+                <div>
+                    <div class="numbers">{{ total_orders }}</div>
+                    <div class="cardName">Total Orders</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <canvas id="dashboardChart" width="400" height="150"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    {% comment %} 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // JavaScript to populate data and create a chart
+        var ctx = document.getElementById('dashboardChart').getContext('2d');
+
+        var data = {
+            labels: ['Users', 'Rewards', 'Products', 'Orders'],
+            datasets: [{
+                label: 'Total',
+                data: [{{ total_users }}, {{ total_rewards }}, {{ total_products }}, {{ total_orders }}],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 15
+            }]
+        };
+
+        var options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        var dashboardChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script> 
+    {% endcomment %}
+
+{% endblock %}

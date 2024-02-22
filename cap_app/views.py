@@ -237,7 +237,6 @@ def user_logout(request):
 
 
 
-
 # def market_pairs_latest(request):
 #     api_key = settings.COINMARKETCAP_API_KEY
 #     url = 'https://pro-api.coinmarketcap.com/v1/exchange/market-pairs/latest'

@@ -7,4 +7,4 @@ python-decouple
 dj-database-url
 psycopg2-binary
 beautifulsoup4
-django-countries
+
