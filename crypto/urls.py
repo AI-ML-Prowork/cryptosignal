@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("cap_app.urls")),
+    path("admin_panel/", include("capAdmin_app.urls")),
 
 ]
 

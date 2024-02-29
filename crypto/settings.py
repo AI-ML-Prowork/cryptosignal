@@ -41,6 +41,7 @@ ALLOWED_HOSTS = ['.vercel.app','*']
 
 INSTALLED_APPS = [
     "cap_app",
+    "capAdmin_app",
     "rest_framework",
     "django.contrib.admin",
     "django.contrib.auth",
