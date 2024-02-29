@@ -1,0 +1,55 @@
+{% extends "admin_index.html" %}
+{% load static %}
+
+
+
+
+{% block content %}
+<body>
+
+<div class="container">
+    <h1>User Profile List</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Mobile Number</th>
+            <th>Date of Birth</th>
+            <th>Profile Summary</th>
+        </tr>
+        </thead>
+        <tbody>
+            <!-- Dummy User Data -->
+            {% for i in some_variable %}
+                <tr>
+                    <td>{{ i }}</td>
+                    <td>{{ "John" }}</td>
+                    <td>{{ "Doe" }}</td>
+                    <td>{{ "Male" }}</td>
+                    <td>{{ "+1234567890" }}</td>
+                    <td>{{ "1990-01-01" }}</td>
+                    <td>{{ "hi, i am a trader" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+
+    <div class="pagination">
+        <!-- Pagination links (Replace with your actual pagination logic) -->
+        <span>&laquo;</span>
+        <span class="active">1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>&raquo;</span>
+    </div>
+</div>
+
+</body>
+
+{% endblock %}
