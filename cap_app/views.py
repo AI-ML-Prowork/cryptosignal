@@ -12,7 +12,7 @@ import os
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'user_home.html')
 
 
 @login_required(login_url='user_login')
